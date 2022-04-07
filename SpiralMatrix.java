@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class SpiralMatrix {
@@ -17,37 +16,36 @@ public class SpiralMatrix {
         while (true){
             for (int j=index; j<colons-index; j++){
                 System.out.print(matrix[index][j]);
-                allNumbers--;
-                if(allNumbers==0){
-                    return;
-                }
-                else System.out.print(" ");
+                allNumbers = decreaseAllNumbers(allNumbers);
+                if(allNumbers==0) return;
             }
             for (int i=index+1; i<rows-1-index; i++){
                 System.out.print(matrix[i][colons-1-index]);
-                allNumbers--;
-                if(allNumbers==0){
-                    return;
-                }
-                else System.out.print(" ");
+                allNumbers = decreaseAllNumbers(allNumbers);
+                if(allNumbers==0) return;
             }
             for (int j=colons-1-index; j>=index; j--){
                 System.out.print(matrix[rows-1-index][j]);
-                allNumbers--;
-                if(allNumbers==0){
-                    return;
-                }
-                else System.out.print(" ");
+                allNumbers = decreaseAllNumbers(allNumbers);
+                if(allNumbers==0) return;
             }
             for (int i=rows-2-index; i>=index+1; i--){
                 System.out.print(matrix[i][index]);
-                allNumbers--;
-                if(allNumbers==0){
-                    return;
-                }
-                else System.out.print(" ");
+                allNumbers = decreaseAllNumbers(allNumbers);
+                if(allNumbers==0) return;
             }
             index++;
+        }
+    }
+
+    private static int decreaseAllNumbers(int allNumbers) {
+        allNumbers--;
+        if(allNumbers!=0){
+            System.out.print(" ");
+            return allNumbers;
+        }
+        else {
+            return 0;
         }
     }
 }
